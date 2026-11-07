@@ -42,6 +42,34 @@ Turning statistical and machine learning research into practical improvements.
 
 ---
 
+## Experience
+
+### Graduate Research Assistant — Brigham Young University
+
+**Jan 2026 – Present · Advised by Dr. Tom Kerby**
+
+- Built a targeted-dropout method from scratch in PyTorch that uses information theory and PCA to choose which parts of a neural network to perturb, instead of dropping neurons at random.
+- Compared no dropout, 10–50% dropout, Gaussian noise, and CoreX targeted perturbations on CIFAR-10 and SVHN across 5 random seeds; CoreX improved target-class accuracy by 1–3% with overall accuracy unchanged.
+- Presented results at the Red Rock Data Science Conference 2026, and bring my own hypotheses and research questions to weekly meetings with my supervisor.
+
+[Full write-up in Projects →](#neural-network-research-targeted-dropout)
+
+### Teaching Assistant, Stat 469: Analysis of Correlated Data — Brigham Young University
+
+**Jul 2026 – Present · Instructor: Dr. Matt Heaton**
+
+- Support about 35 students in regression methods for spatial, temporal, and seasonal correlated data.
+- Complete every assignment myself before grading, then grade roughly 105 submissions each week (about 1,260 per semester).
+
+### Teaching Assistant, Stat 121: Introductory Statistics — Brigham Young University
+
+**Jan 2025 – Apr 2026**
+
+- Taught statistical concepts to 70+ students per session from non-technical, non-statistics majors.
+- Reviewed about 72 homework sets and 6 exams, correcting errors and wording so the section lined up with another professor's.
+
+---
+
 ## Projects
 
 ### 📦 Medline — Predicting Competitor Backorders
@@ -50,7 +78,7 @@ Turning statistical and machine learning research into practical improvements.
 
 Built a predictive analytics approach to identify when competitor products were likely to go on backorder.
 
-Combined inventory, sales, fulfillment, and backorder data using EDA, event studies, feature engineering, and machine learning.
+Built an ETL pipeline for more than 10 million rows of one year of inventory, sales, fulfillment, and backorder data, then used EDA, event studies, time series forecasting, feature engineering, and machine learning to model backorders.
 
 A Lasso logistic regression model achieved an <span class="result">AUC of ~0.82</span>, identifying customer-level fulfillment problems as important early-warning signals.
 
@@ -64,13 +92,15 @@ The analysis was translated into strategies Medline could use to proactively pos
 
 ### 🤖 Employee Scheduling Automation
 
-**In Progress · AI Agents · Business Automation**
+**In Progress · Constraint Optimization · Business Automation**
 
-Exploring how AI agents could automate employee scheduling by balancing employee availability, preferences, and business requirements.
+Started from a real problem: a fast-food manager described building each schedule by hand, which takes 4–6 hours with constant changes.
 
-The project focuses on identifying the business problem and potential ROI first, then determining where AI and optimization can provide meaningful value.
+Built a scheduler with OR-Tools CP-SAT that balances employee availability, preferences, and staffing requirements. It is designed to handle any number of employees and is currently tested on test data.
 
-**Tools:** Python · AI Agents · Optimization · APIs
+Next up is an AI agent layer to handle schedule changes, planned for February 2027.
+
+**Tools:** Python · OR-Tools (CP-SAT) · Optimization
 
 ---
 
@@ -78,15 +108,15 @@ The project focuses on identifying the business problem and potential ROI first,
 
 **Machine Learning · Neural Networks**
 
-Built a movie recommendation system with a team of three to predict whether users would like movies.
+Built a movie recommendation system with a team of three to predict whether users would like movies, using 100,000+ MovieLens ratings from 610 users across 9,742 movies.
 
-Compared logistic regression and KNN against a neural network using user and movie embeddings.
+My role: I built the PyTorch neural network (user and movie embeddings) used for the final predictions, and the pandas pipeline that selected and augmented the data into the shapes our models needed.
 
-The neural network achieved an <span class="result">F1 score of 0.897</span>, substantially outperforming the baseline models.
+The neural network achieved an <span class="result">F1 score of 0.897</span>, compared with 0.684 for logistic regression and 0.679 for KNN. The team also built an interactive Streamlit app to explore the recommendations.
 
-**Tools:** Python · pandas · scikit-learn · PyTorch
+**Tools:** Python · pandas · scikit-learn · PyTorch · Streamlit
 
-[View Project →](https://github.com/chamiltonb8/STAT_486_final_proj/tree/main)
+[View Project →](https://github.com/chamiltonb8/STAT_486_final_proj/tree/main) · [Try the App →](https://stat486finalproj.streamlit.app/UMAP_view)
 
 ---
 
@@ -98,11 +128,11 @@ Developing a new approach to neural network regularization that uses information
 
 I build and train neural networks in PyTorch and use information-theoretic methods to identify important factors in learned representations. I then selectively perturb those factors and evaluate how the changes affect model performance.
 
-Using the CIFAR-10 dataset, my current approach is achieving higher accuracy and a shorter training time than standard dropout, suggesting that targeted perturbation can be more effective than randomly removing information from the network.
+I compared a model with no dropout, standard dropout at 10–50%, Gaussian noise perturbations, and CoreX targeted perturbations on CIFAR-10 and SVHN across 5 random seeds. The results are consistent: CoreX outperforms the baselines on target-class accuracy by 1–3% while overall accuracy stays about the same, suggesting that targeted perturbation can be more effective than randomly removing information from the network. I presented this work at the Red Rock Data Science Conference 2026.
 
 This research has given me hands-on experience with deep learning, neural network architectures, PyTorch, representation learning, information theory, experimental design, and large-scale model evaluation.
 
-**Tools:** Python · PyTorch · CIFAR-10 · PCA · Information Theory · TensorBoard
+**Tools:** Python · PyTorch · CIFAR-10 · SVHN · PCA · Information Theory · TensorBoard
 
 [View Research →](https://github.com/TomKerbyLab/LocalCorex_Target_Dropout)
 
@@ -112,9 +142,13 @@ This research has given me hands-on experience with deep learning, neural networ
 
 <span class="result">**2nd Place — Case Competition**</span>
 
-Analyzed New York City rat complaints to identify where rat activity was concentrated, what factors were associated with complaints, and how the city could respond.
+Analyzed 31,312 NYC 311 rodent complaints from 2025 and joined them with housing and economic data for all 51 council districts (25 variables) to identify where rat activity was concentrated, what factors were associated with it, and how the city could respond.
 
-Used geographic analysis, visualization, regression, and random forest modeling to turn the data into actionable recommendations.
+Found that complaint volume did not always track confirmed rat activity: the districts with the most complaints were not always those with the highest confirmed-rat rates.
+
+Used DBSCAN clustering (50 m / 1 hour) to flag nearby complaints with conflicting inspection outcomes, LASSO and linear regression to find housing-related predictors, and random forest modeling and leaflet maps to turn the data into actionable recommendations.
+
+Recommended that the city send trap supplies to residents and communities who report rats so they can act right away, instead of dispatching one visit to check and another to exterminate. The city would set traps itself on public property.
 
 **Tools:** R · tidyverse · sf · leaflet · dbscan · glmnet · ggplot2
 
@@ -154,6 +188,11 @@ Click a category to see the tools and examples of where I've applied them.
 | **Feature Engineering** | [Medline](https://github.com/Ridge42/Medline_Case_study) |
 | **Information Theory** | [Neural Network Research](https://github.com/TomKerbyLab/LocalCorex_Target_Dropout) |
 | **Statistical Analysis** | [Medline](https://github.com/Ridge42/Medline_Case_study) · [NYC Rat Case Competition](https://github.com/Ridge42/rats_case_competition2026) |
+| **Time Series Forecasting** | [Medline](https://github.com/Ridge42/Medline_Case_study) |
+| **Event Studies** | [Medline](https://github.com/Ridge42/Medline_Case_study) |
+| **A/B Testing & Experimentation** | [Neural Network Research](https://github.com/TomKerbyLab/LocalCorex_Target_Dropout) |
+| **Clustering (DBSCAN)** | [NYC Rat Case Competition](https://github.com/Ridge42/rats_case_competition2026) |
+| **Constraint Optimization (OR-Tools CP-SAT)** | Employee Scheduling Automation (in progress) |
 
 </details>
 
@@ -167,6 +206,7 @@ Click a category to see the tools and examples of where I've applied them.
 | **ggplot2** | [NYC Rat Case Competition](https://github.com/Ridge42/rats_case_competition2026) |
 | **Leaflet** | [NYC Rat Case Competition](https://github.com/Ridge42/rats_case_competition2026) |
 | **Data Visualization** | [NYC Rat Case Competition](https://github.com/Ridge42/rats_case_competition2026) · [Medline](https://github.com/Ridge42/Medline_Case_study) |
+| **Tableau** | Coursework |
 
 </details>
 
@@ -177,6 +217,7 @@ Click a category to see the tools and examples of where I've applied them.
 |---|---|
 | **Git / GitHub** | [GitHub Profile](https://github.com/Ridge42) |
 | **Jupyter Notebooks** | [Medline](https://github.com/Ridge42/Medline_Case_study) |
+| **ETL** | [Medline](https://github.com/Ridge42/Medline_Case_study) · [NYC Rat Case Competition](https://github.com/Ridge42/rats_case_competition2026) |
 | **VS Code** | Development environment |
 | **APIs** | Data extraction and analysis |
 | **Quarto** | This portfolio |
